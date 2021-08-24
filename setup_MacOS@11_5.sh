@@ -122,7 +122,7 @@ echo "***********************************************************************"
 # brew install --cask wechat
 # brew install --cask mattermost
 # brew install --cask karabiner-elements
-# brew install --cask spectacle
+# brew install --cask rectangle
 # brew install --cask microsoft-office
 # brew install --cask mpv
 # brew install --cask obs
