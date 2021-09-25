@@ -99,6 +99,7 @@ echo "***********************************************************************"
 
 # brew install git wget youtube-dl htop
 # brew install ffmpeg imagemagick ghostscript python
+# brew install pdfsandwich
 
 # brew install --cask iterm2 # best terminal
 # brew install --cask sublime-text
