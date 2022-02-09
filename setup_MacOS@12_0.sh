@@ -11,7 +11,7 @@ echo_ok "Install starting. You may be asked for your password (for sudo)."
 cd ~
 
 # install command-line tools from xcode (without installing xcode)
-# xcode-select --install
+xcode-select --install
 
 echo "***********************************************************************"
 echo "***************************** OS settings *****************************"
@@ -58,7 +58,7 @@ git config --global core.excludesfile ~/.gitignore_global
   defaults delete com.apple.dock persistent-apps # unpin apps
   defaults delete com.apple.dock persistent-others # unpin more apps
   # defaults write com.apple.dock pinning -string start # place at left
-  defaults write com.apple.dock mineffect scale # just scale minimizing windows instead of fancy minimize
+  defaults write com.apple.dock mineffect -string scale # just scale minimizing windows instead of fancy minimize
   killall Dock # restart dock
 
   # echo_warn "Tell Chrome to use system dialog for printing"
@@ -87,7 +87,7 @@ if hash brew &> /dev/null; then
   brew update
 else
   echo_warn "Installing homebrew..."
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 
@@ -97,36 +97,35 @@ echo "***********************************************************************"
 
 # echo_warn "Installing standard homebrew libraries"
 
-# brew install git wget youtube-dl htop
-# brew install ffmpeg imagemagick ghostscript python
-# brew install pdfsandwich
+brew install wget youtube-dl htop
+brew install ffmpeg imagemagick ghostscript python
+brew install pdfsandwich
 
-# brew install --cask iterm2 # best terminal
-# brew install --cask sublime-text
-# brew install --cask sublime-merge
-# brew install --cask visual-studio-code
-# brew install --cask xquartz
-# brew install --cask vlc
-# brew install --cask mpv
-# brew install --cask the-unarchiver
-# brew install --cask mactex # tex, latex. This takes a long time, do separately
-# brew install --cask spectacle
-# brew install --cask inkscape
-# brew install --cask gimp
-# brew install --cask adobe-acrobat-reader
-# brew install --cask flux
-# brew install --cask firefox
-# brew install --cask thunderbird
-# brew install --cask google-chrome
-# brew install --cask zoom
-# brew install --cask webex
-# brew install --cask wechat
-# brew install --cask mattermost
-# brew install --cask karabiner-elements
-# brew install --cask rectangle
-# brew install --cask microsoft-office
-# brew install --cask mpv
-# brew install --cask obs
+brew install --cask google-chrome
+brew install --cask iterm2 # best terminal
+brew install --cask sublime-text
+brew install --cask sublime-merge
+brew install --cask visual-studio-code
+brew install --cask xquartz
+brew install --cask vlc
+brew install --cask mpv
+brew install --cask the-unarchiver
+brew install --cask rectangle
+brew install --cask inkscape
+brew install --cask gimp
+brew install --cask adobe-acrobat-reader
+brew install --cask flux
+brew install --cask firefox
+brew install --cask thunderbird
+brew install --cask zoom
+brew install --cask webex
+brew install --cask wechat
+brew install --cask mattermost
+brew install --cask microsoft-office
+brew install --cask mpv
+brew install --cask obs
+brew install --cask audacity
+brew install --cask mactex # tex, latex. This takes a long time, do separately
 
 
 echo "***********************************************************************"
@@ -157,6 +156,12 @@ echo "***********************************************************************"
 
 # github and gitlab add ssh keys
 # transfer files
+
+
+
+
+# brew install --cask karabiner-elements
+
 
 
 
