@@ -100,6 +100,7 @@ echo "***********************************************************************"
 brew install wget youtube-dl htop
 brew install ffmpeg imagemagick ghostscript python
 brew install pdfsandwich
+brew install testdisk
 
 brew install --cask google-chrome
 brew install --cask iterm2 # best terminal
