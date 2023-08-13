@@ -163,7 +163,7 @@ echo "***********************************************************************"
 
 # brew install --cask karabiner-elements
 
-
+# brew install testdisk  # disk recover tool
 
 
 
