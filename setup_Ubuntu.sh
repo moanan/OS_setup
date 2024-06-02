@@ -1,5 +1,5 @@
 #!/bin/sh
-# Run this after fresh installation of Ubuntu 20.04.2.0
+# Run this after fresh installation of Ubuntu 22.04.3
 # chmod 755 setup_E320.sh
 
 
@@ -44,21 +44,21 @@ chsh -s $(which zsh) # it needs reboot to take effect
 echo "*** Setup fish-like zsh ***"
 # sudo apt -y install zsh-syntax-highlighting
 # sudo apt -y install zsh-autosuggestions
-# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+# git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+# git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# echo "***********************************************************************"
-# echo "*********** All done! Please do the following task manually ***********"
-# echo "***********************************************************************"
-# echo "Manually add the following lines to ~/.zshrc to enable the plugins"
-# echo "plugins=(zsh-autosuggestions"
-# echo "           zsh-syntax-highlighting)"
-# echo "-------------------------------------------------------------------"
-# echo "Add backup ssh key pairs: https://superuser.com/questions/332510/how-to-transfer-my-ssh-keys-to-another-machine"
-# echo "-------------------------------------------------------------------"
-# echo "Reboot the system to make installations work."
-# echo "-------------------------------------------------------------------"
+echo "***********************************************************************"
+echo "*********** All done! Please do the following task manually ***********"
+echo "***********************************************************************"
+echo "Manually add the following lines to ~/.zshrc to enable the plugins"
+echo "plugins=(zsh-autosuggestions"
+echo "           zsh-syntax-highlighting)"
+echo "-------------------------------------------------------------------"
+echo "Add backup ssh key pairs: https://superuser.com/questions/332510/how-to-transfer-my-ssh-keys-to-another-machine"
+echo "-------------------------------------------------------------------"
+echo "Reboot the system to make installations work."
+echo "-------------------------------------------------------------------"
