@@ -20,6 +20,8 @@ sudo apt -y install exfat-fuse exfat-utils
 sudo apt -y install tree
 sudo apt -y install vim
 sudo apt -y install openssh-server
+sudo apt -y install psensor
+sudo apt -y install psensor-server
 
 echo "*** System settings ***"
 git config --global user.name "amo"

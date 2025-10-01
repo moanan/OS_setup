@@ -95,13 +95,12 @@ echo "***********************************************************************"
 echo "************************* uncomment below to brew *********************"
 echo "***********************************************************************"
 
-# echo_warn "Installing standard homebrew libraries"
+echo_warn "Installing standard homebrew libraries"
 
-brew install wget youtube-dl htop
+brew install wget htop
 brew install ffmpeg imagemagick ghostscript python
 brew install pdfsandwich
 brew install testdisk
-
 brew install --cask google-chrome
 brew install --cask iterm2 # best terminal
 brew install --cask sublime-text
@@ -115,29 +114,34 @@ brew install --cask rectangle
 brew install --cask inkscape
 brew install --cask gimp
 brew install --cask adobe-acrobat-reader
-brew install --cask flux
-brew install --cask firefox
 brew install --cask thunderbird
 brew install --cask zoom
-brew install --cask webex
 brew install --cask wechat
-brew install --cask mattermost
-brew install --cask microsoft-office
 brew install --cask mpv
-brew install --cask obs
-brew install --cask audacity
-brew install --cask mactex # tex, latex. This takes a long time, do separately
+brew install --cask sfm
+brew install --cask microsoft-onenote
 
+
+# outdated: 
+# brew install --cask obs
+# brew install --cask audacity
+# brew install --cask mattermost
+# brew install --cask microsoft-office
+# brew install --cask flux
+# brew install --cask firefox
+# brew install --cask webex
 
 echo "***********************************************************************"
 echo "************************** manual installation ************************"
 echo "***********************************************************************"
 
+# brew install --cask mactex # tex, latex. This takes a long time, do separately
 # chrome-remote desktop
 # anaconda
 # cisco anyconnect
 # # matlab
 # # endnote
+# youtube-dl 
 
 
 # manual settings

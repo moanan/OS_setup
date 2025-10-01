@@ -1,5 +1,5 @@
 #!/bin/sh
-# Run this to setup ROS2 (foxy) development environment on Ubuntu 20.04
+# Run this to setup ROS2 (humble) and Moveit2 development environment on Ubuntu 22.04
 
 
 if [ `whoami` == "root" ]; then 
@@ -21,79 +21,46 @@ echo "********************************"
 echo "********* Setup source *********"
 echo "********************************"
 
-sudo apt update && sudo apt -y install curl gnupg2 lsb-release
-sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o /usr/share/keyrings/ros-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+sudo apt install software-properties-common
+sudo add-apt-repository universe
+sudo apt update && sudo apt install curl -y
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
 echo "********************************"
-echo "******* Install packages *******"
+echo "******* Install ROS Humble *******"
 echo "********************************"
 sudo apt update
-sudo apt -y install ros-foxy-desktop
-sudo apt -y install ros-foxy-ros-base
-source /opt/ros/foxy/setup.bash         # source the setup script
-sudo apt install -y python3-argcomplete # Install argcomplete (optional)
-
-echo "source /opt/ros/foxy/setup.zsh" >> ~/.zshrc
-
-sudo apt install -y python3-rosdep
-sudo rosdep init
-rosdep update
+sudo apt upgrade
+sudo apt install ros-humble-desktop
+sudo apt install ros-dev-tools
 
 echo "********************************"
 echo "******* Install MoveIt 2 *******"
 echo "********************************"
 # https://moveit.ros.org/install-moveit2/source/
-source /opt/ros/foxy/setup.zsh
+source /opt/ros/humble/setup.zsh
+sudo apt install python3-rosdep
+sudo rosdep init
 rosdep update
-sudo apt install -y \
-  build-essential \
-  cmake \
-  git \
-  libbullet-dev \
-  python3-colcon-common-extensions \
-  python3-flake8 \
-  python3-pip \
-  python3-pytest-cov \
-  python3-rosdep \
-  python3-setuptools \
-  python3-vcstool \
-  wget \
-  clang-format-10 && \
-# install some pip packages needed for testing
-python3 -m pip install -U \
-  argcomplete \
-  flake8-blind-except \
-  flake8-builtins \
-  flake8-class-newline \
-  flake8-comprehensions \
-  flake8-deprecated \
-  flake8-docstrings \
-  flake8-import-order \
-  flake8-quotes \
-  pytest-repeat \
-  pytest-rerunfailures \
-  pytest
-
-export COLCON_WS=~/ws_moveit2/
-mkdir -p $COLCON_WS/src
-cd $COLCON_WS/src
-
-wget https://raw.githubusercontent.com/ros-planning/moveit2/main/moveit2.repos
-vcs import < moveit2.repos
-git clone https://github.com/ros-planning/moveit2.git
-rosdep install -r --from-paths . --ignore-src --rosdistro foxy -y
-
-cd $COLCON_WS
-colcon build --event-handlers desktop_notification- status- --cmake-args -DCMAKE_BUILD_TYPE=Release
-
+sudo apt update
+sudo apt dist-upgrade
+sudo apt install python3-colcon-common-extensions
+sudo apt install python3-colcon-mixin
+colcon mixin add default https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
+colcon mixin update default
+sudo apt install python3-vcstool
+mkdir -p ~/ws_moveit2/src
+cd ~/ws_moveit2/src
+git clone --branch humble https://github.com/ros-planning/moveit2_tutorials
+vcs import < moveit2_tutorials/moveit2_tutorials.repos
+sudo apt update && rosdep install -r --from-paths . --ignore-src --rosdistro $ROS_DISTRO -y
 
 echo "********************************"
-echo "****** Install Odrivetool ******"
+echo "******* Build MoveIt 2 *******"
 echo "********************************"
-
-cd
-sudo pip3 install --upgrade odrive
+cd ~/ws_moveit2
+colcon build --mixin release --parallel-workers 1
 
 echo "********************************"
 echo "******** All done baby! ********"
